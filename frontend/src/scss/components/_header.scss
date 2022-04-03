@@ -1,0 +1,211 @@
+$red: #F37272;
+$white: #fff;
+$whitey: #f0f0f0;
+
+$duration: .2s;
+$distance: 8px;
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+// Cтили для header;
+.header {
+    background-color: #111;
+    &__content-wrap {
+        position: relative;
+        align-items: center;
+        padding: 90px 0 98px;
+    }
+    &__logo {
+        width: 43px;
+        height: 50px;
+    }
+}
+// Стили для для header ---End---
+
+// Стили для выпадающего меню;
+.menu {
+    display: flex;
+    align-items: center;
+    &__overlay {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        left: 0;
+        background-color: #111;
+        transition: opacity 300ms ease-in-out;
+        z-index: 2;
+        transform: translateY(-2px);
+    }
+    &__overlay.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__dropdown-list {
+        margin-right: 30px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    &__dropdown-item {
+        position: relative;
+        display: flex;
+        margin-right: 30px;
+    }
+
+    &__dropdown-inner-list  {
+        display: none;
+        position: absolute;
+        min-width: 300px;
+        top: 10px;
+        left: 0;
+        padding: 60px 0 0;
+    }
+
+    &__dropdown-inner-item {
+        margin-bottom: 15px;
+    }
+    &__dropdown-sub-list {
+        display: none;
+        position: absolute;
+        min-width: 300px;
+        right: -130px;
+        top: 0;
+        padding: 0 0 0 20px;
+        z-index: 99;
+    }
+
+    &__dropdown-inner-item {
+        position: relative;
+    }
+
+    &__dropdown-item:hover > a,
+    &__dropdown-item:focus-within > a {
+        color: #75FF72;
+    }
+
+    &__dropdown-list > li:hover &__dropdown-inner-list {
+        display: block;
+    }
+
+    &__dropdown-inner-list > li:hover &__dropdown-sub-list {
+        display: block;
+    }
+}
+// Стили для выпадающего меню ---End---
+
+// Стили для ссылки при взаимодействии;
+.main-link {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: $white;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding-bottom: 8px;
+    white-space:nowrap;
+    @media (max-width:639px) {
+        font-size: 13px;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0; right: 0;
+        height: 2px;
+        background-color: $white;
+    }
+    &:before {
+        opacity: 0;
+        transform: translateY(- $distance);
+        transition: transform 0s $easeOutBack, opacity 0s;
+    }
+    &:after {
+        opacity: 0;
+        transform: translateY(4px);
+        transition: transform $duration $easeOutBack, opacity $duration;
+    }
+    &:focus-within,
+    &:hover,
+    &:focus {
+        &:before,
+        &:after {
+            opacity: 1;
+            transform: translateY(0);
+            color: #75FF72;
+        }
+        &:before {
+            transition: transform $duration $easeOutBack, opacity $duration;
+        }
+        &:after {
+            transition: transform 0s $duration $easeOutBack, opacity 0s $duration;
+        }
+    }
+}
+
+//Адаптив Header
+
+@media (max-width: 575px) {
+    .header {
+        &__content-wrap {
+            padding: 35px 0 73px;
+        }
+    }
+    .menu {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 100%;
+        transition: all 300ms ease-in;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 100;
+        &.menu-active {
+            right: 0%;
+            opacity: 1;
+            visibility: visible;
+            z-index: 100;
+        }
+        &__dropdown-list {
+            margin-right: 0;
+            background-color: #111;
+            padding: 30px 0 500px 30px;
+            flex-direction: column;
+        }
+        &__dropdown-inner-list {
+            padding: 30px 0 0 0;
+            transform: translateX(-25px);
+            position: inherit;
+        }
+        &__overlay {
+            height: 100%;
+            transform: translateY(-10px);
+        }
+    }
+    .burger--wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main-link:before,
+    .main-link:after {
+        top: 25px;
+    }
+}
+
+@media (max-width: 420px) {
+    .menu {
+        left: 0;
+        &.menu-active {
+            left: 0;
+        }
+    }
+}

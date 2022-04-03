@@ -1,0 +1,92 @@
+// базовые подключения
+@import "vars";
+@import "mixins";
+@import "fonts";
+@import "settings";
+
+// подключения компонентов страницы
+@import "./components/header";
+@import "./components/hero";
+@import "components/burger";
+@import "components/faq";
+@import "components/news";
+@import "components/subscribe";
+@import "components/footer";
+
+// обнуления
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul,
+ol {
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: #fff;
+    text-decoration: none !important;
+    font-family: var(--font-family-medium);
+}
+
+.main-title {
+    margin-bottom: 30px;
+    color: var(--color-main-title);
+    font-weight: 500;
+    font-size: 80px;
+    line-height: 85px;
+    letter-spacing: -0.03em;
+    font-family: var(--font-family-medium);
+    @media (max-width: 575px) {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+}
+.container {
+    max-width: 1270px;
+}
+
+.submit-btn {
+    padding: 14px 20px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    color: #0B0A0D;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    transition: all 200ms ease-out;
+}
+
+.submit-btn:hover {
+    background-color: #75ff72;
+}
+
+    /* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+    margin: 0;
+    color: #fff;
+}
+
+body {
+    font-family: var(--font-family-regular);
+}

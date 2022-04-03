@@ -1,0 +1,17 @@
+// если вы хотите использовать sass-переменные - удалите root
+// colors
+:root {
+  // base
+    --font-family-regular: "Mplus1pRehular", sans-serif;
+    --font-family-medium: "Mplus1pMedium", sans-serif;
+    --content-width: 1170px;
+    --container-offset: 15px;
+    --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+    --main-color-font: #fff;
+    --color-link: #fff;
+    --color-main-title: #fff;
+    --color-bg: #111;
+
+  // colors
+  --light-color: #fff;
+}
